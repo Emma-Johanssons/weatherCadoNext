@@ -87,6 +87,7 @@ export default function Home() {
               src={snowgif}
               alt="Snow"
               className=" w-full h-full absolute top-0 "
+              layout="responsive"
             />
           );
         case "Rain":
@@ -95,12 +96,14 @@ export default function Home() {
               src={raingif}
               alt="Rain"
               className=" w-full h-[90%] absolute top-0 "
+              layout="responsive"
             />
           );
         case "Clouds":
           return (
             <Image
-              className=" absolute h-full top-0"
+              className=" absolute object-cover h-full bottom-0"
+              layout="responsive"
               src={clouds}
               alt="Clouds"
             />
@@ -108,7 +111,8 @@ export default function Home() {
         case "Clear":
           return (
             <Image
-              className=" absolute object-cover w-40 h-60 top-52 right-0"
+              className=" absolute object-cover w-40 h-60 top-40 right-0"
+              layout="responsive"
               src={avobee}
               alt="Clear"
             />
@@ -121,15 +125,42 @@ export default function Home() {
   function getWeatherIcons() {
     switch (weather?.weather[0].main) {
       case "Snow":
-        return <Image src={finger} alt="Snow" className=" ml-48 w-48" />;
+        return (
+          <Image
+            src={finger}
+            alt="Snow"
+            className=" ml-48 w-48"
+            layout="responsive"
+          />
+        );
+
       case "Rain":
-        return <Image src={rain} alt="Rain" className="w-80 h-80" />;
+        return (
+          <Image
+            src={rain}
+            alt="Rain"
+            className="w-80 h-80"
+            layout="responsive"
+          />
+        );
       case "Clouds":
         return (
-          <Image src={cloudy} alt="Clouds" className=" w-40 h-80 z-20  " />
+          <Image
+            src={cloudy}
+            alt="Clouds"
+            className=" w-40 h-80 z-20  "
+            layout="responsive"
+          />
         );
       case "Clear":
-        return <Image src={summer} alt="Clear" className="h-80 w-80  " />;
+        return (
+          <Image
+            src={summer}
+            alt="Clear"
+            className="h-80 w-80  "
+            layout="responsive"
+          />
+        );
     }
   }
 
