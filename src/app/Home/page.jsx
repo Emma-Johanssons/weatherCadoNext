@@ -13,6 +13,7 @@ import rain from "/public/avorain.png";
 import thunder from "/public/avothunder.png";
 import angry from "/public/avoangry.png";
 import cloudy from "/public/cloudyavo.png";
+import freezing from "/public/freezing.png";
 
 export default function Home() {
   const router = useRouter();
@@ -22,6 +23,7 @@ export default function Home() {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState("");
   const [isCitySearched, setIsCitySearched] = useState(false);
+  const [temperature, setTemperature] = useState(null);
 
   const fetchWeather = async (city) => {
     try {
@@ -33,17 +35,20 @@ export default function Home() {
         setError("City not found. Try again");
         setWeather(null);
         setText("");
+        setTemperature(null);
       } else {
         setWeather(result);
         setError("");
         setTemperature(result.main.temp);
         setText("");
         setIsCitySearched(true);
+        setTemperature(result.main.temp);
       }
     } catch (error) {
       setError("City not found. Try again");
       setWeather(null);
       setText("");
+      setTemperature(null);
     }
   };
 
@@ -115,8 +120,12 @@ export default function Home() {
     }
     return null;
   }
-
   function getWeatherIcons() {
+    const isFreezingClear =
+      temperature - 273.15 < 0 && weather.weather[0].main === "Clear";
+    console.log("Temperature:", temperature);
+    console.log("Weather Main:", weather?.weather[0]?.main);
+    console.log("Is Freezing Clear:", isFreezingClear);
     switch (weather?.weather[0].main) {
       case "Snow":
         return (
@@ -128,7 +137,6 @@ export default function Home() {
             priority={true}
           />
         );
-
       case "Rain":
         return (
           <Image
@@ -150,22 +158,31 @@ export default function Home() {
           />
         );
       case "Clear":
-        return (
+        return isFreezingClear ? (
+          <Image
+            className="w-full h-full rounded-full "
+            src={freezing}
+            alt="freezing avocado"
+            layout="responsive"
+            priority={true}
+          />
+        ) : (
           <Image
             src={summer}
             alt="Clear"
-            className="h-80 w-80  "
+            className="h-80 w-80 "
             layout="responsive"
             priority={true}
           />
         );
+      default:
+        return null;
     }
   }
 
   const imgBackground = weather && weatherImages[weather.weather[0].main];
   const imgIcon = weather && weatherIcons[weather.weather[0].main];
   const [isCelsius, setIsCelsius] = useState(true);
-  const [temperature, setTemperature] = useState(null);
 
   function toggleTemperature() {
     setIsCelsius(!isCelsius);
@@ -197,7 +214,7 @@ export default function Home() {
       </h1>
       <div className="flex flex-col items-center  w-full">
         <div className=" w-full flex justify-center items-center mt-10 h-[200px]">
-          {getWeatherImage() || (
+          {getWeatherImage() || getWeatherIcons || (
             <Image priority={true} src={familywalk} alt="family walk gif" />
           )}
 
