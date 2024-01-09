@@ -122,10 +122,18 @@ export default function Home() {
   }
   function getWeatherIcons() {
     const isFreezingClear =
-      temperature - 273.15 < 0 && weather.weather[0].main === "Clear";
+      temperature - 273.15 < 0 && weather?.weather[0]?.main === "Clear";
     console.log("Temperature:", temperature);
     console.log("Weather Main:", weather?.weather[0]?.main);
     console.log("Is Freezing Clear:", isFreezingClear);
+    if (
+      !weather ||
+      !weather.weather ||
+      weather.weather.length === 0 ||
+      !weather.weather[0].main
+    ) {
+      return null;
+    }
     switch (weather?.weather[0].main) {
       case "Snow":
         return (
@@ -214,10 +222,9 @@ export default function Home() {
       </h1>
       <div className="flex flex-col items-center  w-full">
         <div className=" w-full flex justify-center items-center mt-10 h-[200px]">
-          {getWeatherImage() || getWeatherIcons || (
+          {!getWeatherImage() && !getWeatherIcons() && (
             <Image priority={true} src={familywalk} alt="family walk gif" />
           )}
-
           {imgIcon && (
             <div className="flex flex-col items-center text-center z-20 ">
               {/* <span className="text-[rgb(160,82,45)]">{weather.name}</span> */}
