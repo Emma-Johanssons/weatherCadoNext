@@ -92,7 +92,6 @@ export default function Home() {
               src={snowgif}
               alt="Snow"
               className=" w-full h-full absolute top-0 "
-              layout="responsive"
               priority={true}
             />
           );
@@ -102,7 +101,6 @@ export default function Home() {
               src={raingif}
               alt="Rain"
               className=" w-full h-[90%] absolute top-0 "
-              layout="responsive"
               priority={true}
             />
           );
@@ -110,7 +108,6 @@ export default function Home() {
           return (
             <Image
               className=" absolute object-cover h-full bottom-0"
-              layout="responsive"
               src={clouds}
               alt="Clouds"
               priority={true}
@@ -141,19 +138,12 @@ export default function Home() {
             src={finger}
             alt="Snow"
             className=" ml-48 w-48"
-            layout="responsive"
             priority={true}
           />
         );
       case "Rain":
         return (
-          <Image
-            src={rain}
-            alt="Rain"
-            className="w-80 h-80"
-            layout="responsive"
-            priority={true}
-          />
+          <Image src={rain} alt="Rain" className="w-80 h-80" priority={true} />
         );
       case "Clouds":
         return (
@@ -161,7 +151,6 @@ export default function Home() {
             src={cloudy}
             alt="Clouds"
             className=" w-40 h-96 z-20  "
-            layout="responsive"
             priority={true}
           />
         );
@@ -171,7 +160,6 @@ export default function Home() {
             className="w-full h-full rounded-full "
             src={freezing}
             alt="freezing avocado"
-            layout="responsive"
             priority={true}
           />
         ) : (
@@ -179,7 +167,6 @@ export default function Home() {
             src={summer}
             alt="Clear"
             className="h-80 w-80 "
-            layout="responsive"
             priority={true}
           />
         );
