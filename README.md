@@ -1,1 +1,1 @@
-See it live here: https://symphonious-maamoul-c13734.netlify.app/
+See it live here: https://weatheravocado.netlify.app/Home
