@@ -225,7 +225,6 @@ export default function Home() {
           {!getWeatherImage() && !getWeatherIcons() && (
             <Image priority={true} src={familywalk} alt="family walk gif" />
           )}
-          <p>Hello</p>
           {imgIcon && (
             <div className="flex flex-col items-center text-center z-20 ">
               {/* <span className="text-[rgb(160,82,45)]">{weather.name}</span> */}
