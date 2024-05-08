@@ -146,11 +146,12 @@ export default function Home() {
           <Image src={rain} alt="Rain" className="w-80 h-80" priority={true} />
         );
       case "Clouds":
+      case "Mist":
         return (
           <Image
             src={cloudy}
             alt="Clouds"
-            className=" w-40 h-96 z-20  "
+            className="w-40 h-80 z-20"
             priority={true}
           />
         );
