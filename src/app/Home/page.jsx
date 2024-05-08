@@ -79,7 +79,7 @@ export default function Home() {
     Snow: finger,
     Rain: rain,
     Thunderstorm: thunder,
-    Drizzle: angry,
+    Drizzle: rain,
     Clouds: cloudy,
     Mist: cloudy,
     Haze: cloudy,
@@ -143,6 +143,7 @@ export default function Home() {
           />
         );
       case "Rain":
+      case "Drizzle":
         return (
           <Image src={rain} alt="Rain" className="w-80 h-80" priority={true} />
         );
