@@ -82,6 +82,7 @@ export default function Home() {
     Drizzle: angry,
     Clouds: cloudy,
     Mist: cloudy,
+    Haze: cloudy,
   };
   function getWeatherImage() {
     if (weather && weather.weather && weather.weather.length > 0) {
@@ -147,6 +148,7 @@ export default function Home() {
         );
       case "Clouds":
       case "Mist":
+      case "Haze":
         return (
           <Image
             src={cloudy}
