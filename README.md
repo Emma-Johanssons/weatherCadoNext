@@ -1,1 +1,1 @@
-See it live here: https://weatheravocado.netlify.app/Home
+See it live here: https://weather-cado-next.vercel.app/Home
